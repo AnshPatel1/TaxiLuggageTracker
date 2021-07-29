@@ -188,7 +188,7 @@ class Ui_MainWindow(object):
         self.btn_dest_a_2.setFont(font)
         self.btn_dest_a_2.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.btn_dest_a_2.setStyleSheet("border-radius:15px;\n"
-                                        "                                                        background-color: rgb(87, 252, 0, 200);\n"
+                                        "                                                        background-color: rgba(87, 252, 0, 200);\n"
                                         "                                                        color:rgb(255, 255, 255);\n"
                                         "                                                    ")
         self.btn_dest_a_2.setObjectName("btn_dest_a_2")
@@ -212,7 +212,7 @@ class Ui_MainWindow(object):
         self.make_entry_btn.setFont(font)
         self.make_entry_btn.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.make_entry_btn.setStyleSheet("border-radius:15px;\n"
-                                          "                                                        background-color: rgb(87, 252, 0, 200);\n"
+                                          "                                                        background-color: rgba(87, 252, 0, 200);\n"
                                           "                                                        color:rgb(255, 255, 255);\n"
                                           "                                                    ")
         self.make_entry_btn.setObjectName("make_entry_btn")
