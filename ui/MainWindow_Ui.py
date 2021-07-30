@@ -179,8 +179,7 @@ class Ui_MainWindow(object):
         self.add_weight_frag.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.add_weight_frag.setStyleSheet("border-radius:15px;\n"
                                            "background-color: rgba(87, 252, 0, 200);\n"
-                                           "color:rgb(255, 255, 255);\n"
-                                           "                                                    ")
+                                           "color:rgb(255, 255, 255);\n")
         self.add_weight_frag.setObjectName("add_weight_frag")
         self.formLayout.setWidget(3, QtWidgets.QFormLayout.FieldRole, self.add_weight_frag)
         self.rem_weight_frag = QtWidgets.QPushButton(self.frame_2)
@@ -191,8 +190,7 @@ class Ui_MainWindow(object):
         self.rem_weight_frag.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.rem_weight_frag.setStyleSheet("border-radius:15px;\n"
                                            "background-color: rgb(252, 0, 87);\n"
-                                           "color:rgb(255, 255, 255);\n"
-                                           "                                                    ")
+                                           "color:rgb(255, 255, 255);\n")
         self.rem_weight_frag.setObjectName("rem_weight_frag")
         self.formLayout.setWidget(4, QtWidgets.QFormLayout.FieldRole, self.rem_weight_frag)
         self.make_entry_btn = QtWidgets.QPushButton(self.frame_2)
@@ -203,8 +201,7 @@ class Ui_MainWindow(object):
         self.make_entry_btn.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.make_entry_btn.setStyleSheet("border-radius:15px;\n"
                                           "background-color: rgba(87, 252, 0, 200);\n"
-                                          "color:rgb(255, 255, 255);\n"
-                                          "                                                    ")
+                                          "color:rgb(255, 255, 255);\n")
         self.make_entry_btn.setObjectName("make_entry_btn")
         self.formLayout.setWidget(6, QtWidgets.QFormLayout.FieldRole, self.make_entry_btn)
         self.make_exit_btn = QtWidgets.QPushButton(self.frame_2)
@@ -215,8 +212,7 @@ class Ui_MainWindow(object):
         self.make_exit_btn.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.make_exit_btn.setStyleSheet("border-radius:15px;\n"
                                          "background-color: rgb(252, 0, 87);\n"
-                                         "color:rgb(255, 255, 255);\n"
-                                         "                                                    ")
+                                         "color:rgb(255, 255, 255);\n")
         self.make_exit_btn.setObjectName("make_exit_btn")
         self.formLayout.setWidget(7, QtWidgets.QFormLayout.FieldRole, self.make_exit_btn)
         self.entry_pass_label = QtWidgets.QLabel(self.frame_2)
@@ -257,15 +253,13 @@ class Ui_MainWindow(object):
         self.traveller_combobox.setMinimumSize(QtCore.QSize(0, 30))
         self.traveller_combobox.setStyleSheet("background-color: rgba(0, 0, 0, 57);\n"
                                               "border-radius: 15px;\n"
-                                              "color: rgb(255, 255, 255);\n"
-                                              "                                                    ")
+                                              "color: rgb(255, 255, 255);\n")
         self.traveller_combobox.setObjectName("traveller_combobox")
         self.verticalLayout_2.addWidget(self.traveller_combobox)
         self.description_area = QtWidgets.QPlainTextEdit(self.groupBox)
         self.description_area.setStyleSheet("color: rgba(255, 255, 255, 227);\n"
                                             "background-color: rgba(0, 0, 0, 140);\n"
-                                            "border-radius: 15px;\n"
-                                            "                                                    ")
+                                            "border-radius: 15px;\n")
         self.description_area.setMidLineWidth(0)
         self.description_area.setUndoRedoEnabled(True)
         self.description_area.setReadOnly(True)
@@ -281,7 +275,9 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
-        # TODO: Below are custom event handler statememnts
+        # TODO: Below are custom event handler statements
+
+
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
