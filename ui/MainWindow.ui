@@ -27,9 +27,8 @@
   </property>
   <property name="styleSheet">
    <string notr="true">#centralwidget{
-                background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:1, y2:0, stop:0.044335 rgba(39, 52, 114,
-                255), stop:0.876847 rgba(123, 9, 154, 255));
-                }
+background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:1, y2:0, stop:0.044335 rgba(39, 52, 114, 255), stop:0.876847 rgba(123, 9, 154, 255));
+ }
             </string>
   </property>
   <widget class="QWidget" name="centralwidget">
@@ -146,7 +145,7 @@
           </property>
           <property name="styleSheet">
            <string notr="true">border-radius:15px;
-                                                background-color: rgb(161, 255, 138);
+background-color: rgb(161, 255, 138);
                                             </string>
           </property>
           <property name="text">
@@ -224,7 +223,7 @@
           </property>
           <property name="styleSheet">
            <string notr="true">border-radius:15px;
-                                                background-color: rgb(161, 255, 138);
+background-color: rgb(161, 255, 138);
                                             </string>
           </property>
           <property name="text">
@@ -392,8 +391,8 @@
             </property>
             <property name="styleSheet">
              <string notr="true">border-radius:15px;
-                                                        background-color: rgb(87, 252, 0, 200);
-                                                        color:rgb(255, 255, 255);
+background-color: rgba(87, 252, 0, 200);
+color:rgb(255, 255, 255);
                                                     </string>
             </property>
             <property name="text">
@@ -419,8 +418,8 @@
             </property>
             <property name="styleSheet">
              <string notr="true">border-radius:15px;
-                                                        background-color: rgb(252, 0, 87);
-                                                        color:rgb(255, 255, 255);
+background-color: rgb(252, 0, 87);
+color:rgb(255, 255, 255);
                                                     </string>
             </property>
             <property name="text">
@@ -446,8 +445,8 @@
             </property>
             <property name="styleSheet">
              <string notr="true">border-radius:15px;
-                                                        background-color: rgb(87, 252, 0, 200);
-                                                        color:rgb(255, 255, 255);
+background-color: rgba(87, 252, 0, 200);
+color:rgb(255, 255, 255);
                                                     </string>
             </property>
             <property name="text">
@@ -473,8 +472,8 @@
             </property>
             <property name="styleSheet">
              <string notr="true">border-radius:15px;
-                                                        background-color: rgb(252, 0, 87);
-                                                        color:rgb(255, 255, 255);
+background-color: rgb(252, 0, 87);
+color:rgb(255, 255, 255);
                                                     </string>
             </property>
             <property name="text">
@@ -569,8 +568,8 @@
             </property>
             <property name="styleSheet">
              <string notr="true">background-color: rgba(0, 0, 0, 57);
-                                                        border-radius: 15px;
-                                                        color: rgb(255, 255, 255);
+border-radius: 15px;
+color: rgb(255, 255, 255);
                                                     </string>
             </property>
            </widget>
@@ -579,8 +578,8 @@
            <widget class="QPlainTextEdit" name="description_area">
             <property name="styleSheet">
              <string notr="true">color: rgba(255, 255, 255, 227);
-                                                        background-color: rgba(0, 0, 0, 140);
-                                                        border-radius: 15px;
+background-color: rgba(0, 0, 0, 140);
+border-radius: 15px;
                                                     </string>
             </property>
             <property name="midLineWidth">
