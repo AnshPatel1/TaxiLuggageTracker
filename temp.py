@@ -1,3 +1,3 @@
-from system.cargo import *
-from system.traveller import *
+from core.cargo import *
+from core.traveller import *
 

@@ -9,6 +9,9 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from core import *
+from core.cargo import Trunk
+from core.traveller import Traveller
 
 
 class Ui_MainWindow(object):
@@ -77,7 +80,7 @@ class Ui_MainWindow(object):
         self.btn_dest_b.setFont(font)
         self.btn_dest_b.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.btn_dest_b.setStyleSheet("border-radius:15px;\n"
-                                      "\background-color: rgb(161, 255, 138);\n")
+                                      "background-color: rgb(161, 255, 138);\n")
         self.btn_dest_b.setObjectName("btn_dest_b")
         self.btn_dest_e = QtWidgets.QPushButton(self.frame_map)
         self.btn_dest_e.setGeometry(QtCore.QRect(30, 380, 30, 30))
@@ -275,9 +278,118 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
-        # TODO: Below are custom event handler statements
+        # TODO: Below are custom event handler statements and global variables
+
+        self.cargo = Trunk(0)
+
+        self.make_entry_btn.clicked.connect(
+            lambda: self.generate_traveller_entity(
+                self.name_entry.text(),
+                self.contact_entry.text(),
+                self.luggage_handler_temp,
+            )
+        )
+
+        self.add_weight_frag.clicked.connect(
+            lambda: self.pos_spike_handler(
+                self.weight_entry.text(),
+            )
+        )
 
 
+
+        self.btn_dest_a.clicked.connect(
+            lambda: self.processRemovedWeight(),
+        )
+
+        self.btn_dest_b.clicked.connect(
+            lambda: self.processRemovedWeight(),
+        )
+
+        self.btn_dest_c.clicked.connect(
+            lambda: self.processRemovedWeight(),
+        )
+
+        self.btn_dest_d.clicked.connect(
+            lambda: self.processRemovedWeight(),
+        )
+
+        self.btn_dest_e.clicked.connect(
+            lambda: self.processRemovedWeight(),
+        )
+
+
+
+        self.btn_dest_a.clicked.connect(
+            lambda: self.onMoveToDestA(),
+        )
+
+        self.btn_dest_b.clicked.connect(
+            lambda: self.onMoveToDestB(),
+        )
+
+        self.btn_dest_c.clicked.connect(
+            lambda: self.onMoveToDestC(),
+        )
+
+        self.btn_dest_d.clicked.connect(
+            lambda: self.onMoveToDestD(),
+        )
+
+        self.btn_dest_e.clicked.connect(
+            lambda: self.onMoveToDestE(),
+        )
+
+        self.entry_pass_label.hide()
+        self.exit_pass_label.hide()
+        self.make_exit_btn.hide()
+        self.populateTravellerCombobox()
+
+
+
+        self.luggage_handler_temp = []
+        self.latest_traveller = 0
+        self.travellers = []
+        self.sub_neg_weight_spikes = []
+
+    def processRemovedWeight(self):
+        if self.sub_neg_weight_spikes is not []:
+            self.cargo.remove_luggage(self.sub_neg_weight_spikes)
+            self.sub_neg_weight_spikes = []
+
+    def pos_spike_handler(self, ws):
+        self.luggage_handler_temp.append(int(ws))
+        self.weight_entry.clear()
+
+    def generate_traveller_entity(self, name, contact, weight_spikes):
+        self.travellers.append(Traveller(weight_spikes, name, contact))
+
+    def onNewTraveller(self):
+        # TODO: visual interface for new entered traveller
+        pass
+
+    def onTravellerExit(self):
+        # TODO: visual interface for last exited traveller
+        pass
+
+    def populateTravellerCombobox(self):
+        # TODO: fetch list of all traveller since the start and display
+        pass
+
+    def onMoveToDestA(self):
+        pass
+
+    def onMoveToDestB(self):
+        pass
+
+    def onMoveToDestC(self):
+        pass
+
+    def onMoveToDestD(self):
+        pass
+
+    def onMoveToDestE(self):
+        pass
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
