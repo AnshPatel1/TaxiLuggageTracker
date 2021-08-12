@@ -290,31 +290,35 @@ class Ui_MainWindow(object):
             )
         )
 
+        self.rem_weight_frag.clicked.connect(
+            lambda: self.processRemovedWeight(),
+        )
+
         self.add_weight_frag.clicked.connect(
             lambda: self.pos_spike_handler(
                 self.weight_entry.text(),
             )
         )
 
-        self.btn_dest_a.clicked.connect(
-            lambda: self.processRemovedWeight(),
-        )
-
-        self.btn_dest_b.clicked.connect(
-            lambda: self.processRemovedWeight(),
-        )
-
-        self.btn_dest_c.clicked.connect(
-            lambda: self.processRemovedWeight(),
-        )
-
-        self.btn_dest_d.clicked.connect(
-            lambda: self.processRemovedWeight(),
-        )
-
-        self.btn_dest_e.clicked.connect(
-            lambda: self.processRemovedWeight(),
-        )
+        # self.btn_dest_a.clicked.connect(
+        #     lambda: self.processRemovedWeight(),
+        # )
+        #
+        # self.btn_dest_b.clicked.connect(
+        #     lambda: self.processRemovedWeight(),
+        # )
+        #
+        # self.btn_dest_c.clicked.connect(
+        #     lambda: self.processRemovedWeight(),
+        # )
+        #
+        # self.btn_dest_d.clicked.connect(
+        #     lambda: self.processRemovedWeight(),
+        # )
+        #
+        # self.btn_dest_e.clicked.connect(
+        #     lambda: self.processRemovedWeight(),
+        # )
 
         self.btn_dest_a.clicked.connect(
             lambda: self.onMoveToDestA(),
@@ -339,25 +343,36 @@ class Ui_MainWindow(object):
         self.entry_pass_label.hide()
         self.exit_pass_label.hide()
         self.make_exit_btn.hide()
-        self.populateTravellerCombobox()
+        # self.populateTravellerCombobox()
 
         self.luggage_handler_temp = []
         self.latest_traveller = 0
         self.travellers = []
         self.sub_neg_weight_spikes = []
         self.dest_coords = {
-            'a': '23.014375, 72.503517',  # Crown Plaza
-            'b': '23.027636, 72.507615',  # Iscon Crossing
-            'c': '23.034607, 72.510040',  # Rajpath Club
-            'd': '23.049535, 72.517207',  # Thaltej Crossing
-            'e': '23.129724, 72.540968',  # Nirma University
+            'a': [23.014375, 72.503517],  # Crown Plaza
+            'b': [23.027636, 72.507615],  # Iscon Crossing
+            'c': [23.034607, 72.510040],  # Rajpath Club
+            'd': [23.049535, 72.517207],  # Thaltej Crossing
+            'e': [23.129724, 72.540968],  # Nirma University
         }
         self.current_stop = 'a'
+        self.traveller_log = ""
 
     def processRemovedWeight(self):
-        if self.sub_neg_weight_spikes is not []:
-            self.cargo.remove_luggage(self.sub_neg_weight_spikes)
-            self.sub_neg_weight_spikes = []
+        print('hi')
+
+        self.sub_neg_weight_spikes.append(int(self.weight_entry.text()))
+        print(self.sub_neg_weight_spikes)
+        print(self.travellers != [])
+
+        if self.sub_neg_weight_spikes != [] and self.travellers != []:
+            print('ok')
+            info = self.cargo.remove_luggage(self.sub_neg_weight_spikes)
+            print(info)
+            if info != -1:
+                self.sub_neg_weight_spikes = []
+                self.onWeightCombinationTravellerRemoval(info)
 
     def pos_spike_handler(self, ws):
         self.luggage_handler_temp.append(int(ws))
@@ -365,18 +380,30 @@ class Ui_MainWindow(object):
 
     def generate_traveller_entity(self, name, contact, weight_spikes):
         self.travellers.append(Traveller(weight_spikes, name, contact, self.dest_coords[self.current_stop]))
+        self.onNewTraveller(name)
 
-    def onNewTraveller(self):
-        # TODO: visual interface for new entered traveller
-        pass
+    def onNewTraveller(self, name):
+        self.populateTravellerCombobox()
+        self.entry_pass_label.show()
+        self.entry_pass_label.setText(name + ' entered')
 
     def onTravellerExit(self):
         # TODO: visual interface for last exited traveller
         pass
 
     def populateTravellerCombobox(self):
-        # TODO: fetch list of all traveller since the start and display
-        pass
+        self.traveller_combobox.clear()
+        for traveller in self.travellers:
+            self.traveller_combobox.addItem(traveller.name)
+
+    def onWeightCombinationTravellerRemoval(self, info):
+        for traveller in self.travellers:
+            if info(1) == traveller.traveller_id:
+                traveller.end_ride()
+                self.travellers.remove(traveller)
+                self.exit_pass_label.show()
+                self.entry_pass_label.hide()
+                self.exit_pass_label.setText(info(0) + ' exited')
 
     def onMoveToDestA(self):
         self.current_stop = 'a'

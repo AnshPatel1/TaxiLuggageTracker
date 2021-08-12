@@ -15,7 +15,7 @@ class Traveller:
             self.baggage_spikes = self.baggage_spikes + (str(i) + ", ")
             self.total_weight = self.total_weight + i
         self.entry_time = datetime.datetime.now().strftime("%H:%M:%S, %m/%d/%Y")
-        self.curr_loc = self.get_address(address)
+        self.curr_loc = self.get_address(address[0], address[1])
         self.mycursor.execute("insert into TravellerDetails.travellers (name, contact_no, weight_spikes, "
                               "total_weight, entry_time, pickup_loc) values ('{}', '{}', '{}', '{}', '{}', '{}');"
                               "".format(self.name,
@@ -28,7 +28,7 @@ class Traveller:
                               )
         self.db.commit()
         self.mycursor.execute("Select MAX(id) from TravellerDetails.travellers;")
-        self.traveller_id = self.mycursor.fetchone()[0]
+        self.traveller_id = int(self.mycursor.fetchone()[0])
         self.exit_time = ''
 
     def end_ride(self):
@@ -39,9 +39,7 @@ class Traveller:
     def get_address(self, lat, long, data='display_name'):
         # TODO: Implement GPS interface & remove parameters
         locator = Nominatim(user_agent='google')
-        coordinates = lat + ',' + long
+        coordinates = str(lat) + ',' + str(long)
         location = locator.reverse(coordinates)
         return location.raw[data]
 
-
-Ansh = Traveller([2234,462,3542], 'Ansh Patel', '9484627422')
