@@ -372,7 +372,7 @@ class Ui_MainWindow(object):
             print(info)
             if info != -1:
                 self.sub_neg_weight_spikes = []
-                self.onWeightCombinationTravellerRemoval(info)
+                self.onTravellerExit(info)
 
     def pos_spike_handler(self, ws):
         self.luggage_handler_temp.append(int(ws))
@@ -387,16 +387,7 @@ class Ui_MainWindow(object):
         self.entry_pass_label.show()
         self.entry_pass_label.setText(name + ' entered')
 
-    def onTravellerExit(self):
-        # TODO: visual interface for last exited traveller
-        pass
-
-    def populateTravellerCombobox(self):
-        self.traveller_combobox.clear()
-        for traveller in self.travellers:
-            self.traveller_combobox.addItem(traveller.name)
-
-    def onWeightCombinationTravellerRemoval(self, info):
+    def onTravellerExit(self, info):
         for traveller in self.travellers:
             if info(1) == traveller.traveller_id:
                 traveller.end_ride()
@@ -404,6 +395,11 @@ class Ui_MainWindow(object):
                 self.exit_pass_label.show()
                 self.entry_pass_label.hide()
                 self.exit_pass_label.setText(info(0) + ' exited')
+
+    def populateTravellerCombobox(self):
+        self.traveller_combobox.clear()
+        for traveller in self.travellers:
+            self.traveller_combobox.addItem(traveller.name)
 
     def onMoveToDestA(self):
         self.current_stop = 'a'
