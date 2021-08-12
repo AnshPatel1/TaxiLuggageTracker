@@ -296,8 +296,6 @@ class Ui_MainWindow(object):
             )
         )
 
-
-
         self.btn_dest_a.clicked.connect(
             lambda: self.processRemovedWeight(),
         )
@@ -317,8 +315,6 @@ class Ui_MainWindow(object):
         self.btn_dest_e.clicked.connect(
             lambda: self.processRemovedWeight(),
         )
-
-
 
         self.btn_dest_a.clicked.connect(
             lambda: self.onMoveToDestA(),
@@ -345,12 +341,18 @@ class Ui_MainWindow(object):
         self.make_exit_btn.hide()
         self.populateTravellerCombobox()
 
-
-
         self.luggage_handler_temp = []
         self.latest_traveller = 0
         self.travellers = []
         self.sub_neg_weight_spikes = []
+        self.dest_coords = {
+            'a': '23.014375, 72.503517',  # Crown Plaza
+            'b': '23.027636, 72.507615',  # Iscon Crossing
+            'c': '23.034607, 72.510040',  # Rajpath Club
+            'd': '23.049535, 72.517207',  # Thaltej Crossing
+            'e': '23.129724, 72.540968',  # Nirma University
+        }
+        self.current_stop = 'a'
 
     def processRemovedWeight(self):
         if self.sub_neg_weight_spikes is not []:
@@ -362,7 +364,7 @@ class Ui_MainWindow(object):
         self.weight_entry.clear()
 
     def generate_traveller_entity(self, name, contact, weight_spikes):
-        self.travellers.append(Traveller(weight_spikes, name, contact))
+        self.travellers.append(Traveller(weight_spikes, name, contact, self.dest_coords[self.current_stop]))
 
     def onNewTraveller(self):
         # TODO: visual interface for new entered traveller
@@ -377,19 +379,19 @@ class Ui_MainWindow(object):
         pass
 
     def onMoveToDestA(self):
-        pass
+        self.current_stop = 'a'
 
     def onMoveToDestB(self):
-        pass
+        self.current_stop = 'b'
 
     def onMoveToDestC(self):
-        pass
+        self.current_stop = 'c'
 
     def onMoveToDestD(self):
-        pass
+        self.current_stop = 'd'
 
     def onMoveToDestE(self):
-        pass
+        self.current_stop = 'e'
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate

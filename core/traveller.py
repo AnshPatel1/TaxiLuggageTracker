@@ -4,7 +4,7 @@ from geopy.geocoders import Nominatim
 
 
 class Traveller:
-    def __init__(self, baggage_weight_spike_list, name, contact):
+    def __init__(self, baggage_weight_spike_list, name, contact, address):
         self.db = connector.connect(host='127.0.0.1', user='root', passwd='ansh1Rutu')
         self.mycursor = self.db.cursor()
         self.name = name
@@ -15,7 +15,7 @@ class Traveller:
             self.baggage_spikes = self.baggage_spikes + (str(i) + ", ")
             self.total_weight = self.total_weight + i
         self.entry_time = datetime.datetime.now().strftime("%H:%M:%S, %m/%d/%Y")
-        self.curr_loc = self.get_address('23.014991199999997', '72.5248992')
+        self.curr_loc = self.get_address(address)
         self.mycursor.execute("insert into TravellerDetails.travellers (name, contact_no, weight_spikes, "
                               "total_weight, entry_time, pickup_loc) values ('{}', '{}', '{}', '{}', '{}', '{}');"
                               "".format(self.name,
