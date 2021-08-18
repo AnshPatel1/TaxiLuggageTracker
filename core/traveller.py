@@ -11,6 +11,7 @@ class Traveller:
         self.contact = contact
         self.baggage_spikes = ''
         self.total_weight = 0
+        self.exit_loc = ''
         for i in baggage_weight_spike_list:
             self.baggage_spikes = self.baggage_spikes + (str(i) + ", ")
             self.total_weight = self.total_weight + i

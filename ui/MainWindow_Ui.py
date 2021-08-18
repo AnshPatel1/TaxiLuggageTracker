@@ -389,12 +389,13 @@ class Ui_MainWindow(object):
 
     def onTravellerExit(self, info):
         for traveller in self.travellers:
-            if info(1) == traveller.traveller_id:
+            if info[1] == traveller.traveller_id:
                 traveller.end_ride()
                 self.travellers.remove(traveller)
                 self.exit_pass_label.show()
                 self.entry_pass_label.hide()
-                self.exit_pass_label.setText(info(0) + ' exited')
+                self.exit_pass_label.setText(info[0] + ' exited')
+
 
     def populateTravellerCombobox(self):
         self.traveller_combobox.clear()
